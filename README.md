@@ -46,7 +46,7 @@ NVM for Windows comes with an installer and uninstaller that can be downloaded o
 
 _Tip: If the command `nvm` does not work immediately after installation, you may need to restart terminal/cmd/powershell._
 
-![NVM for Windows Installer](https://raw.githubusercontent.com/craigkc/nvm-windows/tree/readme-improvements/docs/nvm-usage.png)
+![NVM for Windows Installer](https://raw.githubusercontent.com/craigkc/nvm-windows/readme-improvements/docs/nvm-installer-01.png)
 
 ### After Installation
 
@@ -74,7 +74,7 @@ To upgrade NVM for Windows, simply run the new installer. It will safely overwri
 # CHANGE THE PATH TO THE .PNG FILES
 
 _Figure 1: NVM for Windows_
-![NVM for Windows](https://raw.githubusercontent.com/craigkc/nvm-windows/tree/readme-improvements/docs/nvm-usage.png)
+![NVM for Windows](https://raw.githubusercontent.com/craigkc/nvm-windows/readme-improvements/docs/nvm-usage.png)
 
 _Figure 2: Switching between stable and unstable versions_.
 ![Switching between stable and unstable versions.](http://i.imgur.com/zHEz8Oq.png)
