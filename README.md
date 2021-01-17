@@ -95,8 +95,7 @@ _Figure 2: Switching between stable and unstable versions_.
 
 **Important**: NVM for Windows must be run from within a shell with administrator rights. You'll need to run `powershell`, [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701), or `cmd` (Command Prompt) as Administrator.  NVM for Windows supports the following commands:
 
-### Availble Commands
-
+### Available Commands (Old Version)
 - `nvm`: Show help
 - `nvm arch`: Show if Node.js is running in 32 or 64-bit mode.
 - `nvm arch {32|64}`: Set the default architecture to 32 or 64-bit.
@@ -124,16 +123,41 @@ _Figure 2: Switching between stable and unstable versions_.
 - `nvm npm_mirror <url>`: Set the npm mirror to the URL provided.
   - People in China can use *https://npm.taobao.org/mirrors/npm/*
 
+### Availble Commands
+| Command | Purpose
+| :--- | :--- 
+| `nvm` | Show nvm syntax help
+| `nvm arch` | Show if Node.js is running in 32-bit or 64-bit
+| `nvm arch {32|64}` | Set the default architecture to 32-bit or 64-bit
+| `nvm install <version> [32|64|all]` | Install the specified Node.js version and architecture<br />`<version>` Node.js version (or "latest" for latest stable)<br />`[32|64|all]` 32-bit, 64-bit, or both (default is system arch)
+| `nvm list` | Show the versions of Node.js currently installed
+| `nvm list available` | Show the versions of Node.js available for installation
+| `nvm on` | Enable Node.js version management
+| `nvm off` | Disable Node.js version management (does not uninstall anything)
+| `nvm proxy` | Show the current proxy setting
+| `nvm proxy <url>` | Set a proxy to use for downloads
+| `nvm proxy none` | Remove the proxy setting
+| `nvm uninstall <version>` | Uninstall a specific version of Node.js
+| `nvm use [<version>] [32|64]` | Switch to the specified Node.js version or architecture<br />`[<version>]` Node.js version to use<br />`[32|64]`: 32-bit or 64-bit
+| `nvm root` | Show the current root
+| `nvm root <path>` | Set the directory where nvm should store Node.js installations.
+| `nvm version` | Show the current running version of NVM for Windows.
+| `nvm node_mirror <url>` | Set the node mirror to the URL provided<br />_People in China can use https://npm.taobao.org/mirrors/node/_
+| `nvm npm_mirror <url>` | Set the npm mirror to the URL provided<br />_People in China can use https://npm.taobao.org/mirrors/npm/_
+
 ### Command Examples
+
 | Command | Result |
 | :--- | :--- |
-| `nvm` | Display syntax help
+| `nvm` | Show nvm syntax help
 | `nvm arch 32` | Set default architecture to 32-bit
 | `nvm install 14.15.4 64` | Install 64-bit architecture of Node.js v14.15.4
 | `nvm use 14.15.4 64` | Set active version to Node.js v14.15.4 (64-bit)
 | `nvm use 64` | Set 64-bit architecture of currently active Node.js version
 | `nvm root D:\NVM` | Set NVM for Windows to install Node.js versions to D:\NVM
-| 
+
+_Note: For information about using `nvm use` in a specific directory (or using `.nvmrc`), please refer to [issue #16](https://github.com/coreybutler/nvm-windows/issues/16)._
+
 ### Antivirus
 
 Users have reported some problems using antivirus, specifically McAfee. It appears the antivirus software is manipulating access to the VBScript engine. See [issue #133](https://github.com/coreybutler/nvm-windows/issues/133) for details and resolution.
