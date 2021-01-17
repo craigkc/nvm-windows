@@ -17,37 +17,21 @@ There are situations where the ability to switch between different versions of N
 
 ### Features
 - Easy installation and switching of Node.js versions and architectures
-- Designed from the ground-up for use with Windows
+- Designed for use with Windows
 - Support for Node.js v4+
-- Independent installer and uninstaller
+- Optional installer and uninstaller
+- Open source
 
-### Requirements & Limitations
+### Things to Know
 - This has always been a version manager for only Node.js so there is no back-support for [io.js](https://github.com/maxogden/io.js).
 
 - You must have Windows administrator rights when executing `nvm install` or `nvm use` commands (which create symlinks).
 - Global npm modules are **not** shared between the different versions of Node.js you have installed. **This is by design** to allow fully isolated environments between different Node.js versions.  Additionally, some npm modules may not be supported in the version of Node.js you're using, so be aware of your environment as you work.
 
-### Downloading & Installing
-Downloads are available on the [releases](https://github.com/coreybutler/nvm-windows/releases) page.  See below for important installation instructions.
-
-
----
-## About
-
-### Like This project?
-
-Let people know with a [tweet](https://twitter.com/intent/tweet?hashtags=nodejs&original_referer=http%3A%2F%2F127.0.0.1%3A91%2F&text=Check%20out%20NVM%20for%20Windows!&tw_p=tweetbutton&url=http%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows&via=goldglovecb) or better yet, **click the "Sponsor" button** at the top of this page.
-
-### Notices
-
-This repository now uses [Github Discussions](https://github.com/coreybutler/nvm-windows/discussions) for updates. Sponsors also receive occasional email updates. The Gitter channel has been retired in favor of these new features. Old notices have moved to the [notices wiki entry](https://github.com/coreybutler/nvm-windows/wiki/Notices).
-
-### Common Issues & Resolutions
-
-Please see the [Common Issues](https://github.com/coreybutler/nvm-windows/wiki/Common-Issues) page before posting an issue.
-
-
 ## Getting Started
+
+### Download
+Downloads are available on the [releases](https://github.com/coreybutler/nvm-windows/releases) page.  Versions with or without an installer are available.
 
 
 ### Before Installation
@@ -62,7 +46,7 @@ NVM for Windows comes with an installer and uninstaller that can be downloaded o
 
 _Tip: If the command `nvm` does not work immediately after installation, you may need to restart terminal/cmd/powershell._
 
-![NVM for Windows Installer](http://i.imgur.com/x8EzjSC.png)
+![NVM for Windows Installer](https://raw.githubusercontent.com/craigkc/nvm-windows/tree/readme-improvements/docs/nvm-usage.png)
 
 ### After Installation
 
@@ -87,8 +71,10 @@ To upgrade NVM for Windows, simply run the new installer. It will safely overwri
 
 ## Using NVM for Windows
 
+# CHANGE THE PATH TO THE .PNG FILES
+
 _Figure 1: NVM for Windows_
-![NVM for Windows](http://i.imgur.com/BNlcbi4.png)
+![NVM for Windows](https://raw.githubusercontent.com/craigkc/nvm-windows/tree/readme-improvements/docs/nvm-usage.png)
 
 _Figure 2: Switching between stable and unstable versions_.
 ![Switching between stable and unstable versions.](http://i.imgur.com/zHEz8Oq.png)
@@ -140,8 +126,8 @@ _Figure 2: Switching between stable and unstable versions_.
 | `nvm uninstall <version>` | Uninstall a specific version of Node.js
 | `nvm use [<version>] [32\|64]` | Switch to the specified Node.js version or architecture
 | `nvm root` | Show the current root
-| `nvm root <path>` | Set the directory where nvm should store Node.js installations.
-| `nvm version` | Show the current running version of NVM for Windows.
+| `nvm root <path>` | Set the directory where nvm should store Node.js installations
+| `nvm version` | Show the current running version of NVM for Windows
 | `nvm node_mirror <url>` | Set the node mirror to the URL provided<br />_People in China can use https://npm.taobao.org/mirrors/node/_
 | `nvm npm_mirror <url>` | Set the npm mirror to the URL provided<br />_People in China can use https://npm.taobao.org/mirrors/npm/_
   
@@ -151,21 +137,14 @@ _Figure 2: Switching between stable and unstable versions_.
 | :--- | :--- |
 | `nvm` | Show nvm syntax help
 | `nvm arch 32` | Set default architecture to 32-bit
-| `nvm install 14.15.4 64` | Install 64-bit architecture of Node.js v14.15.4
+| `nvm install 14.15.4 64` | Install Node.js v14.15.4 (64-bit)
 | `nvm install latest` | Install latest stable version with current system architecture
 | `nvm use 14.15.4 64` | Set active version to Node.js v14.15.4 (64-bit)
-| `nvm use 64` | Set 64-bit architecture of currently active Node.js version
+| `nvm use 64` | Set currently active Node.js version to 64-bit
 | `nvm uninstall 14.15.4` | Uninstall Node.js v14.15.4
 | `nvm root D:\NVM` | Set NVM for Windows to install Node.js versions to D:\NVM
 
 _Note: For information about using `nvm use` in a specific directory (or using `.nvmrc`), please refer to [issue #16](https://github.com/coreybutler/nvm-windows/issues/16)._
-
-### Antivirus
-
-Users have reported some problems using antivirus, specifically McAfee. It appears the antivirus software is manipulating access to the VBScript engine. See [issue #133](https://github.com/coreybutler/nvm-windows/issues/133) for details and resolution.
-
-As of 1.1.7, the executable and installation files are code-signed by [Ecor Ventures LLC](https://ecorventures.com)/[Author.io](https://author.io). This should help prevent false positives with most antivirus software.
-
 
 ## Building NVM for Windows From Source
 A detailed guide to build from source is outside the scope of this document, but can be achieved with the following steps:
@@ -178,9 +157,29 @@ A detailed guide to build from source is outside the scope of this document, but
 7. Execute `build.bat`
 8. Check the `dist` directory for generated setup program
 
----
+## Common Issues & Resolutions
+
+Please see the [Common Issues](https://github.com/coreybutler/nvm-windows/wiki/Common-Issues) page before posting an issue.
+
+#### Antivirus
+
+Users have reported some problems using antivirus, specifically McAfee. It appears the antivirus software is manipulating access to the VBScript engine. See [issue #133](https://github.com/coreybutler/nvm-windows/issues/133) for details and resolution.
+
+As of 1.1.7, the executable and installation files are code-signed by [Ecor Ventures LLC](https://ecorventures.com)/[Author.io](https://author.io). This should help prevent false positives with most antivirus software.
+
+## About
+
+### Like This project?
+
+Let people know with a [tweet](https://twitter.com/intent/tweet?hashtags=nodejs&original_referer=http%3A%2F%2F127.0.0.1%3A91%2F&text=Check%20out%20NVM%20for%20Windows!&tw_p=tweetbutton&url=http%3A%2F%2Fgithub.com%2Fcoreybutler%2Fnvm-windows&via=goldglovecb) or better yet, **click the "Sponsor" button** at the top of this page.
+
+### Notices
+
+This repository now uses [Github Discussions](https://github.com/coreybutler/nvm-windows/discussions) for updates. Sponsors also receive occasional email updates. The Gitter channel has been retired in favor of these new features. Old notices have moved to the [notices wiki entry](https://github.com/coreybutler/nvm-windows/wiki/Notices).
+
+
 ## More Information
-### Why another version manager?
+### Why Another Version Manager?
 
 There are several version managers for Node.js. Tools like [nvm](https://github.com/creationix/nvm) and [n](https://github.com/tj/n) only run on macOS and Linux. Windows users are left in the cold? No. [nvmw](https://github.com/hakobera/nvmw) and [nodist](https://github.com/marcelklehr/nodist)
 are both designed for Windows. So, why another version manager for Windows?
@@ -189,7 +188,7 @@ The architecture of most Node.js version managers for Windows rely on `.bat` fil
 
 Additionally, some users struggle to install these modules since it requires a little more knowledge of node's installation structure. I believe if it were easier for people to switch between versions, people might take the time to test their code on back and future versions... which is just good practice.
 
-### What's the big difference?
+### What's the Big Difference?
 
 First and foremost, this version of nvm has no dependency on node. It's written in [Go](https://golang.org/), which is a much more structured approach than hacking around a limited `.bat` file. It does not rely on having an existing node installation. Go offers the ability to create a macOS/Linux version on the same code base. In fact, this is already underway.
 
