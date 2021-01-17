@@ -128,8 +128,8 @@ _Figure 2: Switching between stable and unstable versions_.
 | :--- | :--- 
 | `nvm` | Show nvm syntax help
 | `nvm arch` | Show if Node.js is running in 32-bit or 64-bit
-| `nvm arch {32|64}` | Set the default architecture to 32-bit or 64-bit
-| `nvm install <version> [32|64|all]` | Install the specified Node.js version and architecture
+| `nvm arch {32\|64}` | Set the default architecture to 32-bit or 64-bit
+| `nvm install <version> [32\|64\|all]` | Install the specified Node.js version and architecture
 | `nvm list` | Show the versions of Node.js currently installed
 | `nvm list available` | Show the versions of Node.js available for installation
 | `nvm on` | Enable Node.js version management
@@ -138,7 +138,7 @@ _Figure 2: Switching between stable and unstable versions_.
 | `nvm proxy <url>` | Set a proxy to use for downloads
 | `nvm proxy none` | Remove the proxy setting
 | `nvm uninstall <version>` | Uninstall a specific version of Node.js
-| `nvm use [<version>] [32|64]` | Switch to the specified Node.js version or architecture
+| `nvm use [<version>] [32\|64]` | Switch to the specified Node.js version or architecture
 | `nvm root` | Show the current root
 | `nvm root <path>` | Set the directory where nvm should store Node.js installations.
 | `nvm version` | Show the current running version of NVM for Windows.
