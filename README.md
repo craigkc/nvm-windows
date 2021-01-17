@@ -2,22 +2,30 @@
 [![Open Source Helpers](https://www.codetriage.com/coreybutler/nvm-windows/badges/users.svg)](https://www.codetriage.com/coreybutler/nvm-windows)
 
 
-## Manage Multiple Installations of Node.js on Windows
+## Manage Multiple Versions of Node.js on Windows
 
 **TL;DR** This project is similar (but not identical) to [nvm](https://github.com/creationix/nvm), a popular Node.js version manager for macOS/Linux.
 
-The original [nvm](https://github.com/nvm-sh/nvm) is a completely separate project _for macOS/Linux only._ This project is based on an entirely different philosophy, has been built for Windows, and is not just a clone of nvm. Read more about [Why Another Version Manager?](https://github.com/coreybutler/nvm-windows#why-another-version-manager) and [What's the Big Difference?](https://github.com/coreybutler/nvm-windows#whats-the-big-difference).
+The original [nvm](https://github.com/nvm-sh/nvm) is a completely separate project _for macOS/Linux only._ This project is based on an entirely different philosophy, is built for Windows, and is not just a clone of nvm. Read more about [Why Another Version Manager?](https://github.com/coreybutler/nvm-windows#why-another-version-manager) and [What's the Big Difference?](https://github.com/coreybutler/nvm-windows#whats-the-big-difference).
+
+### Purpose
+There are situations where the ability to switch between different versions of Node.js can be very useful. Microsoft recommends this project in their [Node.js environment setup guide](https://github.com/coreybutler/nvm-windows.git) and npm recommends it in their [Node.js installation and configuration guide](https://docs.npmjs.com/cli/v6/configuring-npm/install#windows-node-version-managers).  Some common uses for NVM for Windows include:
+- Testing code with a newer (beta) version of Node.js without uninstalling an older (stable or LTS) version
+- Easily switching between working on multiple projects with different Node.js version requirements
+- Testing specific combinations of Node.js versions and installed global packages
+
 
 ### Features
 - Easy installation and switching of Node.js versions and architectures
 - Designed from the ground-up for use with Windows
 - Support for Node.js v4+
-- Has an independent installer
+- Independent installer and uninstaller
 
 ### Requirements & Limitations
 - This has always been a version manager for only Node.js so there is no back-support for [io.js](https://github.com/maxogden/io.js).
 
-- You must have Windows administrator rights when running `nvm install` or `nvm use` (to create symlinks).
+- You must have Windows administrator rights when executing `nvm install` or `nvm use` commands (which create symlinks).
+- Global npm modules are **not** shared between the different versions of Node.js you have installed. **This is by design** to allow fully isolated environments between different Node.js versions.  Additionally, some npm modules may not be supported in the version of Node.js you're using, so be aware of your environment as you work.
 
 ### Downloading & Installing
 Downloads are available on the [releases](https://github.com/coreybutler/nvm-windows/releases) page.  See below for important installation instructions.
@@ -25,13 +33,6 @@ Downloads are available on the [releases](https://github.com/coreybutler/nvm-win
 
 ---
 ## About
-
-### Popular Recommendations
-
-- Microsoft recommended in their [Node.js environment setup guide](https://github.com/coreybutler/nvm-windows.git).
-- GitHub npm recommended in their [Node.js installation and configuration guide](https://docs.npmjs.com/cli/v6/configuring-npm/install#windows-node-version-managers).
-
-
 
 ### Like This project?
 
@@ -46,110 +47,110 @@ This repository now uses [Github Discussions](https://github.com/coreybutler/nvm
 Please see the [Common Issues](https://github.com/coreybutler/nvm-windows/wiki/Common-Issues) page before posting an issue.
 
 
-# Using Node Version Manager (nvm) for Windows
-There are situations where the ability to switch between different versions of Node.js can be very useful. For example, this utility can help if you want to test a module you're developing with the latest bleeding edge version without uninstalling the stable version of Node.js
+## Getting Started
 
-## Installation & Upgrades
 
 ### Before Installation
 **You must uninstall any existing versions of Node.js before installing NVM for Windows to prevent conflicting versions**.
 
 1. Backup any global `npmrc` configurations (e.g. `C:\Users\<user>\AppData\Roaming\npm\etc\npmrc`) and/or copy the settings to the user config `C:\Users\<user>\.npmrc`.
-2. Delete any existing installation directories (e.g. `C:\Program Files\nodejs`) that might remain. NVM's generated symlink will not overwrite an existing installation directory, **even if it is empty**.
+2. Delete any existing installation directories (e.g. `C:\Program Files\nodejs`) that might remain. NVM for Windows uses symlinks to switch active versions which will **not** work properly if an installation directory exists, **even if it is empty**.
 3. Delete the existing npm install location (e.g. `C:\Users\<user>\AppData\Roaming\npm`) to prevent global module conflicts.
 
-### Getting Started
+### Installing
 NVM for Windows comes with an installer and uninstaller that can be downloaded on the [releases](https://github.com/coreybutler/nvm/releases) page. There is also a manual option (see [manual installation](https://github.com/coreybutler/nvm-windows/wiki#manual-installation) in the wiki).
 
-_If the command `nvm` doesn't work immediately after installation, you may need to restart your terminal/cmd/powershell._
+_Tip: If the command `nvm` does not work immediately after installation, you may need to restart terminal/cmd/powershell._
 
 ![NVM for Windows Installer](http://i.imgur.com/x8EzjSC.png)
 
 ### After Installation
 
-After installation, you will need to install one or more Node.js versions and then reinstall global utilities (e.g. yarn) for each installed version of Node.js.  See examples below.
+After installation, you will need to install one or more Node.js versions and then reinstall global utilities (e.g. yarn) for each installed version of Node.js.  See examples below. For more details about using yarn with NPM for Windows, see the [wiki](https://github.com/coreybutler/nvm-windows/wiki/Common-Issues#how-do-i-use-yarn-with-nvm-windows).
 
-Install Node.js 14.0.0 (both 32 and 64 bit), use 32 bit, and install yarn globally:
+Install Node.js 14.15.4 LTS (both 32 and 64-bit), use 32 bit, and install yarn globally:
 ```
-nvm install 14.0.0 all
-nvm use 14.0.0 32
+nvm install 14.15.4 all
+nvm use 14.15.4 32
 npm install -g yarn
 ```
-Install Node.js 12.0.1 (architecture matching your system) and install yarn globally:
+Install Node.js 12.20.1 (architecture matching your system) and install yarn globally:
 ```
-nvm install 12.0.1
-nvm use 12.0.1
+nvm install 12.20.1
+nvm use 12.20.1
 npm install -g yarn
 ```
 
-### Upgrading NVM for Windows
+### Upgrading
 
-**To upgrade NVM for Windows**, simply run the new installer. It will safely overwrite the files it needs to update without touching your Node.js installations. Make sure you use the same installation and symlink folder. If you originally installed to the default locations, you just need to click _"next"_ on each window until the installer finishes.
+To upgrade NVM for Windows, simply run the new installer. It will safely overwrite the files it needs to update without touching your Node.js installations. Make sure you use the same installation and symlink folder. If you originally installed to the default locations, you just need to click _"next"_ on each window until the installer finishes.
 
 ## Using NVM for Windows
 
-
+_Figure 1: NVM for Windows_
 ![NVM for Windows](http://i.imgur.com/BNlcbi4.png)
 
+_Figure 2: Switching between stable and unstable versions_.
+![Switching between stable and unstable versions.](http://i.imgur.com/zHEz8Oq.png)
 
-![Switch between stable and unstable versions.](http://i.imgur.com/zHEz8Oq.png)
+**Important**: NVM for Windows must be run from within a shell with administrator rights. You'll need to run `powershell`, [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701), or `cmd` (Command Prompt) as Administrator.  NVM for Windows supports the following commands:
 
-**NVM for Windows must be run from within a shell with administrator rights**. You'll need to start `powershell` or Command Prompt as Administrator.  The basic commands are:
+### Availble Commands
 
 - `nvm`: Show help
-- `nvm arch`: Show if Node.js is running in 32 or 64 bit mode.
-- `nvm arch [32|64]`: Set the default architecture to 32 or 64 bit.
+- `nvm arch`: Show if Node.js is running in 32 or 64-bit mode.
+- `nvm arch {32|64}`: Set the default architecture to 32 or 64-bit.
 - `nvm install <version> [32|64|all]`: Install the specified Node.js version.
   - `<version>` (Required) The Node.js version to install (or "latest" to install the latest stable version).
-  - `[32|64|all]` (Optional) Specify whether to install the 32 or 64 bit version (defaults to system architecture) or "all" to install 32 **and** 64 bit versions.
+  - `[32|64|all]` (Optional) Specify whether to install the 32 or 64-bit version or "all" to install both.
+    - Defaults to system architecture if not specified.
 - `nvm list`: Show the versions of Node.js currently installed.
 - `nvm list available`: Show the versions of Node.js available for installation.
 - `nvm on`: Enable Node.js version management.
 - `nvm off`: Disable Node.js version management (does not uninstall anything).
-- `nvm proxy`: Displays the current proxy.
+- `nvm proxy`: Show the current proxy setting.
 - `nvm proxy <url>`: Set a proxy to use for downloads.
-- `nvm proxy none`: Remove the proxy.
+- `nvm proxy none`: Remove the proxy setting.
 - `nvm uninstall <version>`: Uninstall a specific version of Node.js.
-- `nvm use <version> [32|64]`: Switch to use the specified Node.js version or architecture.
+- `nvm use [<version>] [32|64]`: Switch to the specified Node.js version or architecture.
   - `version` (Optional) Specify the version of Node.js to use (must be installed first).
-  - `[32|64]` (Optional) Specify to use 32 or 64bit architecture.
-    - Note: `nvm use [32|64]` will continue using the selected version, but switch to 32 or 64 bit mode.
-  - For information about using `use` in a specific directory (or using `.nvmrc`), please refer to [issue #16](https://github.com/coreybutler/nvm-windows/issues/16).
-- `nvm root`: Displays the current root.
-- `nvm root <path>`: Set the directory where nvm should store different versions of Node.js.
-- `nvm version`: Displays the current running version of NVM for Windows.
-- `nvm node_mirror <node_mirror_url>`: Set the node mirror to the URL provided.
+  - `[32|64]` (Optional) Specify to use 32 or 64-bit architecture.
+    - For information about using `use` in a specific directory (or using `.nvmrc`), please refer to [issue #16](https://github.com/coreybutler/nvm-windows/issues/16).
+- `nvm root`: Show the current root.
+- `nvm root <path>`: Set the directory where nvm should store Node.js installations.
+- `nvm version`: Show the current running version of NVM for Windows.
+- `nvm node_mirror <url>`: Set the node mirror to the URL provided.
   - People in China can use *https://npm.taobao.org/mirrors/node/*
-- `nvm npm_mirror <npm_mirror_url>`: Set the npm mirror to the URL provided.
+- `nvm npm_mirror <url>`: Set the npm mirror to the URL provided.
   - People in China can use *https://npm.taobao.org/mirrors/npm/*
 
-### Gotcha!
-
-Please note that any global npm modules you may have installed are **not** shared between the various versions of Node.js you have installed. Additionally, some npm modules may not be supported in the version of Node.js you're using, so be aware of your environment as you work.
-
+### Command Examples
+| Command | Result |
+| :--- | :--- |
+| `nvm` | Display syntax help
+| `nvm arch 32` | Set default architecture to 32-bit
+| `nvm install 14.15.4 64` | Install 64-bit architecture of Node.js v14.15.4
+| `nvm use 14.15.4 64` | Set active version to Node.js v14.15.4 (64-bit)
+| `nvm use 64` | Set 64-bit architecture of currently active Node.js version
+| `nvm root D:\NVM` | Set NVM for Windows to install Node.js versions to D:\NVM
+| 
 ### Antivirus
 
 Users have reported some problems using antivirus, specifically McAfee. It appears the antivirus software is manipulating access to the VBScript engine. See [issue #133](https://github.com/coreybutler/nvm-windows/issues/133) for details and resolution.
 
 As of 1.1.7, the executable and installation files are code-signed by [Ecor Ventures LLC](https://ecorventures.com)/[Author.io](https://author.io). This should help prevent false positives with most antivirus software.
 
-### Using Yarn
 
-**TL;DR** `npm i -g yarn`
-
-See the [wiki](https://github.com/coreybutler/nvm-windows/wiki/Common-Issues#how-do-i-use-yarn-with-nvm-windows) for details.
-
-### Build from source
-
-- Install go from http://golang.org
-- Download source (or git clone this repo)
-- Change GOARCH to amd64 in build.bat if you feel like building a 64-bit executable
-- Fire up a Windows command prompt and change directory to project dir
-- Execute `go get github.com/blang/semver`
-- Execute `go get github.com/olekukonko/tablewriter`
-- Execute `build.bat`
-- Check the `dist` directory for generated setup program. 
-
+## Building NVM for Windows From Source
+A detailed guide to build from source is outside the scope of this document, but can be achieved with the following steps:
+1. Install go from http://golang.org
+2. Download source (or git clone this repo)
+3. Change GOARCH to amd64 in build.bat if you feel like building a 64-bit executable
+4. Start a Windows command prompt and change directory to project directory
+5. Execute `go get github.com/blang/semver`
+6. Execute `go get github.com/olekukonko/tablewriter`
+7. Execute `build.bat`
+8. Check the `dist` directory for generated setup program
 
 ---
 ## More Information
@@ -164,7 +165,7 @@ Additionally, some users struggle to install these modules since it requires a l
 
 ### What's the big difference?
 
-First and foremost, this version of nvm has no dependency on node. It's written in [Go](https://golang.org/), which is a much more structured approach than hacking around a limited `.bat` file. It does not rely on having an existing node installation. Go offers the ability to create a Mac/Linux version on the same code base. In fact, this is already underway.
+First and foremost, this version of nvm has no dependency on node. It's written in [Go](https://golang.org/), which is a much more structured approach than hacking around a limited `.bat` file. It does not rely on having an existing node installation. Go offers the ability to create a macOS/Linux version on the same code base. In fact, this is already underway.
 
 The control mechanism is also quite different. There are two general ways to support multiple node installations with hot switching capabilities. The first is to modify the system `PATH` any time you switch versions, or bypass it by using a `.bat` file to mimic the node executable and redirect accordingly. This always seemed a little hackish to me, and there are some quirks as a result of this implementation.
 
